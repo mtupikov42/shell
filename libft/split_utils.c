@@ -27,6 +27,20 @@ int		ft_strsplit_count(char **split)
 	return (len);
 }
 
+void	ft_append_to_split(char **split, char *str)
+{
+	char	**tmp;
+	int		i;
+	int		old_len;
+
+	old_len = ft_strsplit_count(split);
+	tmp = (char **)ft_memalloc(sizeof(char *) * (old_len + 1));
+	ft_memcpy(tmp, split, sizeof(char *) * old_len);
+	tmp[old_len] = str;
+	free(split);
+	split = tmp;
+}
+
 int		ft_split_has_dupl(char **split)
 {
 	int i;

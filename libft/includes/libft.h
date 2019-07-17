@@ -68,6 +68,7 @@ char				*ft_itoa(int n);
 char				*ft_strjoinch(char const *s1, char c);
 char				*ft_strrealloc(char *old_buf, size_t size);
 char				**ft_splitrealloc(char **old, int size);
+void				ft_append_to_split(char **split, char *str);
 void				*ft_memcpy(void *restrict destptr,
 					const void *restrict srcptr, size_t num);
 void				*ft_memccpy(void *restrict destptr,
