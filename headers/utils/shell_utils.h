@@ -21,5 +21,5 @@
 # define PROMPT_CURSOR	COLOR_RESETCOLOR_TEMPLATE"$> "COLOR_RESET
 
 # define SUCCESS		0
-
+# define NO_SUCH_ENV	1488
 #endif

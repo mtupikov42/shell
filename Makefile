@@ -27,7 +27,7 @@ SRC =           	main.c \
 SRC_BUILTINS =		builtins_1.c \
 					builtins_2.c \
 
-SRC_UTILS =		
+SRC_UTILS =			environment_utils.c \
 
 SRC_ENVORONMENT =	environment.c \
 

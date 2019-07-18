@@ -29,7 +29,8 @@ SRC =   ft_atoi.c ft_bzero.c ft_isalnum.c \
         utils.c parse_opt.c print_nbr.c \
         print_wchar.c itoa_utils.c print_wstr.c \
         split_utils.c ft_strisdigit.c ft_atof.c \
-        t_vector_logic.c \
+        t_vector_logic.c safe_free.c ft_strs_join_c.c \
+        ft_remove_from_split.c \
 
 CC	= clang
 
