@@ -27,18 +27,17 @@ int		ft_strsplit_count(char **split)
 	return (len);
 }
 
-void	ft_append_to_split(char **split, char *str)
+char	**ft_append_to_split(char **split, char *str)
 {
-	char	**tmp;
-	int		i;
+	char	**res;
 	int		old_len;
 
 	old_len = ft_strsplit_count(split);
-	tmp = (char **)ft_memalloc(sizeof(char *) * (old_len + 1));
-	ft_memcpy(tmp, split, sizeof(char *) * old_len);
-	tmp[old_len] = str;
+	res = (char **)ft_memalloc(sizeof(char *) * (old_len + 2));
+	ft_memcpy(res, split, sizeof(char *) * old_len);
+	res[old_len] = str;
 	free(split);
-	split = tmp;
+	return (res);
 }
 
 int		ft_split_has_dupl(char **split)

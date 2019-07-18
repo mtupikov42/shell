@@ -7,14 +7,16 @@ LIBFT_NAME = libft.a
 # <=== DIR PATHS ===>
 
 SRC_PATH = ./source/
-SRC_BUILTINS_PATH = $(SRC_PATH)builtins
-SRC_UTILS_PATH = $(SRC_PATH)utils
-SRC_ENVORONMENT_PATH = $(SRC_PATH)environment
+SRC_BUILTINS_PATH = $(SRC_PATH)builtins/
+SRC_UTILS_PATH = $(SRC_PATH)utils/
+SRC_ENVORONMENT_PATH = $(SRC_PATH)environment/
+SRC_EXECUTION_PATH = $(SRC_PATH)execution/
 
 INC_PATH = ./headers/
-INC_BUILTINS_PATH = $(INC_PATH)builtins
-INC_UTILS_PATH = $(INC_PATH)utils
-INC_ENVORONMENT_PATH = $(INC_PATH)environment
+INC_BUILTINS_PATH = $(INC_PATH)builtins/
+INC_UTILS_PATH = $(INC_PATH)utils/
+INC_ENVORONMENT_PATH = $(INC_PATH)environment/
+INC_EXECUTION_PATH = $(INC_PATH)execution/
 
 LIB_PATH = ./libft/
 
@@ -26,10 +28,14 @@ SRC =           	main.c \
 
 SRC_BUILTINS =		builtins_1.c \
 					builtins_2.c \
+					cd_cmd.c \
 
 SRC_UTILS =			environment_utils.c \
+					errors.c \
 
 SRC_ENVORONMENT =	environment.c \
+
+SRC_EXECUTION =		execution.c \
 
 # <=== OBJ ===>
 
@@ -39,23 +45,26 @@ OBJ_SRC = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 OBJ_SRC_BUILTINS = $(addprefix $(OBJ_DIR)/, $(SRC_BUILTINS:.c=.o))
 OBJ_SRC_UTILS = $(addprefix $(OBJ_DIR)/, $(SRC_UTILS:.c=.o))
 OBJ_SRC_ENVORONMENT = $(addprefix $(OBJ_DIR)/, $(SRC_ENVORONMENT:.c=.o))
+OBJ_SRC_EXECUTION = $(addprefix $(OBJ_DIR)/, $(SRC_EXECUTION:.c=.o))
 
 # <=== COMPILER ===>
 
 CC = clang
 
-FLG =	-Werror -Wextra -Wall -I$(LIB_PATH)includes -I$(INC_PATH) -I$(INC_BUILTINS_PATH) \
-		-I$(INC_UTILS_PATH) -I$(INC_ENVORONMENT_PATH)
+INCLUDES = -I$(INC_PATH) -I$(INC_BUILTINS_PATH) -I$(INC_UTILS_PATH) \
+			-I$(INC_ENVORONMENT_PATH) -I$(INC_EXECUTION_PATH)
+
+FLG =	-Werror -Wextra -Wall -I$(LIB_PATH)includes $(INCLUDES)
 
 # <=== RULES ===>
 
 all: $(NAME)
 
-$(NAME): $(OBJ_SRC) $(OBJ_SRC_BUILTINS) $(OBJ_SRC_UTILS) $(OBJ_SRC_ENVORONMENT)
+$(NAME): $(OBJ_SRC) $(OBJ_SRC_BUILTINS) $(OBJ_SRC_UTILS) $(OBJ_SRC_ENVORONMENT) $(OBJ_SRC_EXECUTION)
 	@make -C $(LIB_PATH)
 	@$(CC) $(FLG) -g $(LIB_PATH)$(LIBFT_NAME)  \
 	$(OBJ_SRC) $(OBJ_SRC_BUILTINS) $(OBJ_SRC_UTILS) \
-	$(OBJ_SRC_ENVORONMENT) -o $(NAME)
+	$(OBJ_SRC_ENVORONMENT) $(OBJ_SRC_EXECUTION) -o $(NAME)
 	@echo "shell ✅"
 
 $(OBJ_DIR)/%.o : $(SRC_PATH)%.c
@@ -69,6 +78,9 @@ $(OBJ_DIR)/%.o : $(SRC_UTILS_PATH)%.c
 	@$(CC) $(FLG) -c -o $@ $<
 
 $(OBJ_DIR)/%.o : $(SRC_ENVORONMENT_PATH)%.c
+	@$(CC) $(FLG) -c -o $@ $<
+
+$(OBJ_DIR)/%.o : $(SRC_EXECUTION_PATH)%.c
 	@$(CC) $(FLG) -c -o $@ $<
 
 clean:

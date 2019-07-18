@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   builtins.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/18 19:18:31 by mtupikov          #+#    #+#             */
+/*   Updated: 2019/07/18 22:12:19 by mtupikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BUILTINS_H
 # define BUILTINS_H
 
+static int				g_builtins_size = 7;
 static char				*g_builtins_names[] = {
 	"echo",
 	"cd",
@@ -11,15 +24,15 @@ static char				*g_builtins_names[] = {
 	"help"
 };
 
-int						bt_echo(char **args);
-int						bt_cd(char **args);
-int						bt_setenv(char **args);
-int						bt_unsetenv(char **args);
-int						bt_env(char **args);
-int						bt_exit(char **args);
-int						bt_help(char **args);
+int						bt_echo(const char **args);
+int						bt_cd(const char **args);
+int						bt_setenv(const char **args);
+int						bt_unsetenv(const char **args);
+int						bt_env(const char **args);
+int						bt_exit(const char **args);
+int						bt_help(const char **args);
 
-typedef int				(*t_builtin_func) (char **);
+typedef int				(*t_builtin_func) (const char **);
 
 static t_builtin_func	g_builtin_funcs[] = {
 	&bt_echo,

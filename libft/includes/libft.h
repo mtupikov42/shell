@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/18 21:01:35 by mtupikov          #+#    #+#             */
+/*   Updated: 2019/07/18 22:13:37 by mtupikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -10,8 +22,8 @@
 # include <string.h>
 # include "ft_printf.h"
 
-# define BUFF_SIZE 1
-# define EOL '\n'
+# define BUFF_SIZE	1
+# define EOL		'\n'
 
 typedef struct		s_list
 {
@@ -23,8 +35,8 @@ typedef struct		s_list
 typedef struct		s_vector
 {
 	void			**array;
-	size_t 			capacity;
-	size_t 			size;
+	size_t			capacity;
+	size_t			size;
 }					t_vector;
 
 int					ft_strsplit_count(char **split);
@@ -70,10 +82,12 @@ char				*ft_strjoinch(char const *s1, char c);
 char				*ft_strrealloc(char *old_buf, size_t size);
 char				**ft_splitrealloc(char **old, int size);
 char				**ft_remove_from_split(char **split, char *var);
-char				*ft_replace_substring(const char *str, const char *old, const char *new);
-char				*ft_split_join_delimiter(const char **split, const char *delimiter);
+char				*ft_replace_substring(const char *str,
+					const char *old, const char *new);
+char				*ft_split_join_delimiter(const char **split,
+					const char *delimiter);
 char				*ft_split_join(const char **split);
-void				ft_append_to_split(char **split, char *str);
+char				**ft_append_to_split(char **split, char *str);
 void				*ft_memcpy(void *restrict destptr,
 					const void *restrict srcptr, size_t num);
 void				*ft_memccpy(void *restrict destptr,

@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_2.c                                       :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 19:19:37 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/18 22:09:53 by mtupikov         ###   ########.fr       */
+/*   Created: 2019/07/18 20:53:09 by mtupikov          #+#    #+#             */
+/*   Updated: 2019/07/18 22:17:15 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins/builtins.h"
+#include "utils/errors.h"
 #include "utils/shell_utils.h"
-#include "shell.h"
 #include "libft.h"
 
-int	bt_exit(const char **args)
+int		print_error(char *binary_name, int status)
 {
-	(void)args;
-	g_shell.is_running = false;
-	return (SUCCESS);
-}
-
-int	bt_help(const char **args)
-{
-	int		i;
-
-	(void)args;
-	ft_printf("These builtins are avaiable:\n");
-	i = 0;
-	while (i < 7)
-	{
-		ft_printf(" %i) %s\n", i, g_builtins_names[i]);
-		++i;
-	}
-	return (SUCCESS);
+	if (status == NO_SUCH_BINARY)
+		ft_printf("No such binary: %s\n", binary_name);
+	else if (status == NO_SUCH_ENV)
+		ft_printf("No such environment variable exists\n");
+	else if (status == SETENV_SYNTAX_ERROR)
+		ft_printf("./Usage: setenv ['KEY=VALUE' or 'KEY = VALUE']\n");
+	else if (status == UNSETENV_ARGS_ERROR)
+		ft_printf("./Usage: unsetenv [KEY ...]\n");
+	return (status);
 }

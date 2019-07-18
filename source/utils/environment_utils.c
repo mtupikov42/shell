@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   environment_utils.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/18 21:23:00 by mtupikov          #+#    #+#             */
+/*   Updated: 2019/07/18 22:16:53 by mtupikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "utils/environment_utils.h"
 #include "environment/environment.h"
 #include "libft.h"
 #include <stdbool.h>
 
-static bool is_var_symbol(const char c)
+static bool	is_var_symbol(const char c)
 {
 	return (ft_isalnum(c) || c == '_' || c == '$');
 }
@@ -50,7 +62,7 @@ bool		variable_is_valid(const char *var)
 	i = 0;
 	while (var[i])
 	{
-		if (!(is_var_symbol(line[len])))
+		if (!(is_var_symbol(var[i])))
 		{
 			return (false);
 		}
@@ -81,6 +93,7 @@ char		*replace_environment_variables(char *line)
 			len = ft_strlen(value);
 			free(res);
 			free(key);
+			free(value);
 			res = line;
 			i += len - 1;
 		}

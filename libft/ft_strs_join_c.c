@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strs_join_c.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/18 21:21:22 by mtupikov          #+#    #+#             */
+/*   Updated: 2019/07/18 22:07:20 by mtupikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/libft.h"
 
 char	*ft_strs_join_c(char *str1, char *str2, char c)
@@ -19,12 +31,8 @@ char	*ft_strs_join_c(char *str1, char *str2, char c)
 		++i;
 	}
 	res[i] = c;
-	j = 0;
-	while (str2[i])
-	{
-		res[i] = str2[j];
-		++j;
-		++i;
-	}
+	j = -1;
+	while (str2[++j])
+		res[++i] = str2[j];
 	return (res);
 }

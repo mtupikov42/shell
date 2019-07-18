@@ -1,8 +1,20 @@
-#include "environment/environment.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   environment.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/18 21:26:34 by mtupikov          #+#    #+#             */
+/*   Updated: 2019/07/18 22:15:15 by mtupikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "environment/environment.h"
 #include "shell.h"
 #include "utils/shell_utils.h"
 #include "utils/environment_utils.h"
+#include "libft.h"
 
 char	*get_environment(char *name)
 {
@@ -15,39 +27,40 @@ char	*get_environment(char *name)
 		return (NULL);
 	}
 	i = 0;
+	value = NULL;
 	while (g_shell.env[i])
 	{
-		if (!ft_strncmp(name, g_shell.env[i], ft_strlen(name)))
+		if (ft_strncmp(g_shell.env[i], name, ft_strlen(name)) == 0)
 		{
 			split = ft_strsplit(g_shell.env[i], '=');
 			value = ft_strdup(split[1]);
 			ft_splitdel(&split);
-			break;
+			break ;
 		}
 		++i;
 	}
-	return (value ? value : ft_strnew(0));
+	return (value);
 }
 
 int		set_environment(char *key, char *value)
 {
 	int		i;
-	char	**split;
 	char	*curr_env;
 
 	if (!(curr_env = get_environment(key)))
 	{
-		ft_append_to_split(g_shell.env, ft_strs_join_c(key, value, '='));
+		g_shell.env = ft_append_to_split(
+			g_shell.env,
+			ft_strs_join_c(key, value, '='));
+		return (SUCCESS);
 	}
 	i = 0;
 	while (g_shell.env[i])
 	{
-		if (!ft_strncmp(key, g_shell.env[i], ft_strlen(key)))
+		if (ft_strncmp(key, g_shell.env[i], ft_strlen(key)) == 0)
 		{
-			split = ft_strsplit(g_shell.env[i], '=');
 			free(g_shell.env[i]);
 			g_shell.env[i] = ft_strs_join_c(key, value, '=');
-			ft_splitdel(split);
 		}
 		++i;
 	}
@@ -78,7 +91,7 @@ char	**copy_environment(char **argenv, char **globalenv)
 	char	**env;
 
 	env = argenv ? argenv : globalenv;
-	cpy = (char **)ft_memalloc(sizeof(char*) * ft_strsplit_count(env));
+	cpy = (char **)ft_memalloc(sizeof(char*) * (ft_strsplit_count(env) + 1));
 	i = -1;
 	while (env[++i])
 	{

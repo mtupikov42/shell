@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_replace_substring.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/18 19:28:49 by mtupikov          #+#    #+#             */
+/*   Updated: 2019/07/18 22:13:16 by mtupikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/libft.h"
 
 static int	*get_occurance(const char *str, const char *word)
@@ -22,7 +34,8 @@ static int	*get_occurance(const char *str, const char *word)
 	return (arr);
 }
 
-char	*ft_replace_substring(const char *str, const char *old, const char *new)
+char		*ft_replace_substring(const char *str,
+			const char *old, const char *new)
 {
 	char	*result;
 	int		i;
@@ -34,7 +47,7 @@ char	*ft_replace_substring(const char *str, const char *old, const char *new)
 	old_len = ft_strlen(old);
 	if (!(helper = get_occurance(str, old)))
 		return (NULL);
-	result = ft_memalloc(hepler[0] + helper[1] * (new_len - old_len) + 1);
+	result = ft_memalloc(helper[0] + helper[1] * (new_len - old_len) + 1);
 	i = 0;
 	while (*str)
 		if (ft_strstr(str, old) == str)
