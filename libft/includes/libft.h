@@ -70,6 +70,9 @@ char				*ft_strjoinch(char const *s1, char c);
 char				*ft_strrealloc(char *old_buf, size_t size);
 char				**ft_splitrealloc(char **old, int size);
 char				**ft_remove_from_split(char **split, char *var);
+char				*ft_replace_substring(const char *str, const char *old, const char *new);
+char				*ft_split_join_delimiter(const char **split, const char *delimiter);
+char				*ft_split_join(const char **split);
 void				ft_append_to_split(char **split, char *str);
 void				*ft_memcpy(void *restrict destptr,
 					const void *restrict srcptr, size_t num);

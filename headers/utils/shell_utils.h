@@ -20,6 +20,9 @@
 # define PROMPT_USER	"["COLOR_YELLOW"%s@%s"COLOR_RESET"] "COLOR_MAGENTA"%s\n"
 # define PROMPT_CURSOR	COLOR_RESETCOLOR_TEMPLATE"$> "COLOR_RESET
 
+# define ERROR			-1
 # define SUCCESS		0
 # define NO_SUCH_ENV	1488
+# define EXIT_REQUEST	76
+
 #endif
