@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 20:53:09 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/18 22:17:15 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/19 15:54:56 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "utils/shell_utils.h"
 #include "libft.h"
 
-int		print_error(char *binary_name, int status)
+void	print_error(const char *binary_name, const int status)
 {
 	if (status == NO_SUCH_BINARY)
 		ft_printf("No such binary: %s\n", binary_name);
@@ -24,5 +24,12 @@ int		print_error(char *binary_name, int status)
 		ft_printf("./Usage: setenv ['KEY=VALUE' or 'KEY = VALUE']\n");
 	else if (status == UNSETENV_ARGS_ERROR)
 		ft_printf("./Usage: unsetenv [KEY ...]\n");
-	return (status);
+	else if (status == TOO_MANY_ARGS)
+		ft_printf("%s: too many arguments\n", binary_name);
+	else if (status == PERMISIION_DENIED)
+		ft_printf("%s: permission denied\n", binary_name);
+	else if (status == NO_OLD_PWD_VAR)
+		ft_printf("%s: env variable OLD_PWD does not exist", binary_name);
+	else if (status == NO_SUCH_DIR)
+		ft_printf("%s: no such directory exists", binary_name);
 }

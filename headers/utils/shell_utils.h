@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 20:52:10 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/19 12:32:24 by anonymous        ###   ########.fr       */
+/*   Updated: 2019/07/19 15:54:51 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define COLOR_MAGENTA			"\x1b["MAGENTA"m"
 # define COLOR_TEMPLATE			"\x1b[%sm"
 
-# define PROMPT_PLACE			"["COLOR_YELLOW"%s@%s"COLOR_RESET"] "
+# define PROMPT_PLACE			COLOR_YELLOW"%s@%s"COLOR_RESET" "
 # define PROMPT_USER			PROMPT_PLACE COLOR_MAGENTA"%s\n"
 # define PROMPT_CURSOR			COLOR_RESET COLOR_TEMPLATE"$"COLOR_RESET"> "
 
@@ -37,15 +37,19 @@
 # define NO_SUCH_BINARY			1001
 # define SETENV_SYNTAX_ERROR	1002
 # define UNSETENV_ARGS_ERROR	1003
-# define CD_TOO_MANY_ARGS		1004
-# define CD_PERMISIION_DENIED	1005
-# define CD_NO_OLD_PWD			1006
-# define CD_NO_SUCH_DIR			1007
+# define TOO_MANY_ARGS			1004
+# define PERMISIION_DENIED		1005
+# define NO_OLD_PWD_VAR			1006
+# define NO_SUCH_DIR			1007
+# define NO_PATH_VAR			1008
+# define NO_PWD_VAR				1009
 
 # define PWD_BUFF_SIZE			1024
 
 # define PWD_VAR				"PWD"
 # define OLD_PWD_VAR			"OLDPWD"
+# define USER_VAR				"USER"
+# define PATH_VAR				"PATH"
 # define HOME_VAR				"HOME"
 # define HOME_SYM				'~'
 # define CD_PREV_PATH			"-"

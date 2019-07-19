@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.h                                           :+:      :+:    :+:   */
+/*   signals.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 19:26:48 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/19 14:20:52 by anonymous        ###   ########.fr       */
+/*   Created: 2019/07/19 14:26:30 by anonymous         #+#    #+#             */
+/*   Updated: 2019/07/19 14:27:08 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERRORS_H
-# define ERRORS_H
+#ifndef SIGNALS_H
+# define SIGNALS_H
 
-void	print_error(char *binary_name, int status);
+void	setup_signals(void);
 
 #endif
