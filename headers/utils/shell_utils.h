@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 20:52:10 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/18 22:16:40 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/19 12:32:24 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,17 @@
 # define NO_SUCH_BINARY			1001
 # define SETENV_SYNTAX_ERROR	1002
 # define UNSETENV_ARGS_ERROR	1003
+# define CD_TOO_MANY_ARGS		1004
+# define CD_PERMISIION_DENIED	1005
+# define CD_NO_OLD_PWD			1006
+# define CD_NO_SUCH_DIR			1007
+
+# define PWD_BUFF_SIZE			1024
+
+# define PWD_VAR				"PWD"
+# define OLD_PWD_VAR			"OLDPWD"
+# define HOME_VAR				"HOME"
+# define HOME_SYM				'~'
+# define CD_PREV_PATH			"-"
 
 #endif

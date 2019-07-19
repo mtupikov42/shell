@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd_cmd.h                                           :+:      :+:    :+:   */
+/*   variables_expansion.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 21:42:23 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/19 12:35:25 by anonymous        ###   ########.fr       */
+/*   Created: 2019/07/19 10:15:20 by anonymous         #+#    #+#             */
+/*   Updated: 2019/07/19 10:51:41 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CD_CMD_H
-# define CD_CMD_H
+#ifndef VARIABLES_EXPANSION_H
+# define VARIABLES_EXPANSION_H
 
-int		execute_cd(const char *dir, const char *oldpwd);
+char	*replace_home_variable(char *line);
+void	expand_variables(char **line);
 
 #endif

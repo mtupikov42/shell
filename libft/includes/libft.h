@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:01:35 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/18 22:13:37 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/19 10:56:39 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <string.h>
+# include <stdbool.h>
 # include "ft_printf.h"
 
 # define BUFF_SIZE	1
@@ -130,5 +131,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 void				vector_push_back(t_vector *vector, void *data);
 void				*vector_get_at(t_vector *vector, size_t index);
+bool				ft_is_whitespace(const char c);
 
 #endif

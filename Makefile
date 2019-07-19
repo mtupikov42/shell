@@ -34,6 +34,7 @@ SRC_UTILS =			environment_utils.c \
 					errors.c \
 
 SRC_ENVORONMENT =	environment.c \
+					variables_expansion.c \
 
 SRC_EXECUTION =		execution.c \
 

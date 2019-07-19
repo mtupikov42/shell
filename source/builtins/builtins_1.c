@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:26:26 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/18 22:04:27 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/19 12:14:27 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "utils/shell_utils.h"
 #include "utils/environment_utils.h"
 #include "environment/environment.h"
+#include "builtins/cd_cmd.h"
 #include "shell.h"
 #include "libft.h"
 
@@ -39,8 +40,24 @@ int	bt_echo(const char **args)
 
 int	bt_cd(const char **args)
 {
-	(void)args;
-	return (SUCCESS);
+	int		status;
+	char	*old_pwd;
+	char	pwd[PWD_BUFF_SIZE];
+	char	current_pwd[PWD_BUFF_SIZE];
+
+	if (ft_strsplit_count(args) > 1)
+		return (CD_TOO_MANY_ARGS);
+	old_pwd = get_environment(OLD_PWD_VAR);
+	getcwd(current_pwd, PWD_BUFF_SIZE);
+	status = execute_cd(args[0], old_pwd);
+	if (status == SUCCESS)
+	{
+		getcwd(pwd, PWD_BUFF_SIZE);
+		set_environment(PWD_VAR, pwd);
+		set_environment(OLD_PWD_VAR, current_pwd);
+	}
+	safe_free(old_pwd);
+	return (status);
 }
 
 int	bt_setenv(const char **args)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:02:35 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/18 22:10:42 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/19 11:42:20 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libft.h"
 #include "execution/execution.h"
 #include "shell.h"
+#include "environment/variables_expansion.h"
 #include <unistd.h>
 
 static void		print_prompt(void)
@@ -61,6 +62,7 @@ int				main_loop(void)
 		i = 0;
 		while (commands && commands[i])
 		{
+			expand_variables(&commands[i]);
 			args = ft_strsplit(commands[i], ' ');
 			g_shell.last_status = execute_command((const char **)args);
 			ft_splitdel(&args);
