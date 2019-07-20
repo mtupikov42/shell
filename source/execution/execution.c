@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:28:03 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/20 14:13:04 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 20:24:41 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-static int	fork_and_execute(char *path, const char **args)
+int			fork_and_execute(char *path, const char **args)
 {
 	int	status;
 
@@ -60,23 +60,23 @@ static int	try_execute_global_binary(const char **args)
 	char	**paths;
 	char	*path;
 
-	path = get_environment(PATH_VAR);
-	if (!path)
+	if ((status = try_execute_directly(args)) == SUCCESS)
+		return (status);
+	if (!(path = get_environment(PATH_VAR)))
 		return (NO_PATH_VAR);
 	paths = ft_strsplit(path, ':');
 	free(path);
-	i = 0;
+	i = -1;
 	status = PERMISIION_DENIED;
-	while (paths[i] && status != SUCCESS)
-	{
-		path = ft_strs_join_c(paths[i], args[0], '/');
-		if (access(path, X_OK) == 0)
-			status = fork_and_execute(path, args);
-		else if (access(path, F_OK) != 0)
-			status = NO_SUCH_BINARY;
-		free(path);
-		++i;
-	}
+	while (paths[++i] && status != SUCCESS)
+		{
+			path = ft_strs_join_c(paths[i], args[0], '/');
+			if (access(path, X_OK) == 0)
+				status = fork_and_execute(path, args);
+			else if (access(path, F_OK) != 0)
+				status = NO_SUCH_BINARY;
+			free(path);
+		}
 	ft_splitdel(&paths);
 	return (status);
 }
@@ -110,7 +110,8 @@ int			execute_command(const char **args)
 	status = try_execute_builtin(args);
 	if (status != NO_SUCH_BINARY)
 		return (status);
-	if (binary_name_contains_slash(args[0]))
-		return (try_execute_local_binary(args));
-	return (try_execute_global_binary(args));
+	status = try_execute_global_binary(args);
+	if (status != NO_SUCH_BINARY)
+		return (status);
+	return (try_execute_local_binary(args));
 }

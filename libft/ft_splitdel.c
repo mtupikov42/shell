@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_splitdel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 23:22:48 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/04/11 23:22:51 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 15:55:36 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,16 @@ int	ft_splitdel(char ***split)
 	int		i;
 
 	i = 0;
-	str = *split;
-	while (*str)
+	if (split && *split)
 	{
-		ft_strdel(str);
-		i++;
-		str = &(*split)[i];
+		str = *split;
+		while (*str)
+		{
+			ft_strdel(str);
+			i++;
+			str = &(*split)[i];
+		}
+		ft_memdel((void **)split);
 	}
-	ft_memdel((void **)split);
 	return (0);
 }

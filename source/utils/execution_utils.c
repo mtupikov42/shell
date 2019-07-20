@@ -6,12 +6,16 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 13:47:37 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/20 14:54:04 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 20:24:09 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils/execution_utils.h"
+#include "utils/shell_utils.h"
+#include "execution/execution.h"
 #include "libft.h"
+#include <sys/types.h>
+#include <sys/wait.h>
 
 static int	get_size_without_empty_lines(char **args)
 {
@@ -34,11 +38,14 @@ bool	command_contain_only_whitespaces(char *cmd)
 	int	i;
 
 	i = 0;
-	while (cmd[i])
+	if (cmd)
 	{
-		if (!ft_is_whitespace(cmd[i]))
-			return (false);
-		++i;
+		while (cmd[i])
+		{
+			if (!ft_is_whitespace(cmd[i]))
+				return (false);
+			++i;
+		}
 	}
 	return (true);
 }
@@ -69,7 +76,12 @@ char	**trim_arguments(char **args)
 	return (new_args);
 }
 
-bool	binary_name_contains_slash(const char *binary)
+int		try_execute_directly(const char **args)
 {
-	return (ft_strchr(binary, '/') != NULL);
+	int status;
+
+	status = PERMISIION_DENIED;
+	if (access(args[0], X_OK) == 0)
+		status = fork_and_execute((char *)args[0], args);
+	return (status);
 }

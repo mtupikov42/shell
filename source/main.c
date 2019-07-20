@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:02:40 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/19 14:39:57 by anonymous        ###   ########.fr       */
+/*   Updated: 2019/07/20 19:54:48 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "environment/environment.h"
 #include "utils/shell_utils.h"
 #include "signals/signals.h"
+
+t_shell	g_shell;
 
 int		main(int argc, char **argv, char **env)
 {

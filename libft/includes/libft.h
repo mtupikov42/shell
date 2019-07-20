@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:01:35 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/20 12:47:03 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 18:45:25 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 # define BUFF_SIZE	1
 # define EOL		'\n'
+# define ABS(x)		(x < 0 ? (-x) : x)
 
 typedef struct		s_list
 {
@@ -85,6 +86,7 @@ char				*ft_itoa(int n);
 char				*ft_strjoinch(const char *s1, const char c);
 char				*ft_strrealloc(char *old_buf, const size_t size);
 char				**ft_splitrealloc(char **old, const int size);
+char				**ft_remove_from_split_c(char **split, char *var, char c);
 char				**ft_remove_from_split(char **split, char *var);
 char				*ft_replace_substring(const char *str,
 					const char *old, const char *new);

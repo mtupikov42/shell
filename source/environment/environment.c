@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:26:34 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/20 12:38:55 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 20:00:50 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ char	*get_environment(char *name)
 	char	**split;
 
 	if (!variable_is_valid(name))
-	{
 		return (NULL);
-	}
 	i = 0;
 	value = NULL;
 	while (g_shell.env[i])
 	{
-		if (ft_strncmp(g_shell.env[i], name, ft_strlen(name)) == 0)
+		if (ABS(ft_strcmp(g_shell.env[i], name)) == '=')
 		{
 			split = ft_strsplit(g_shell.env[i], '=');
 			value = ft_strdup(split[1]);
@@ -77,7 +75,7 @@ int		unset_environment(char *name)
 	{
 		return (NO_SUCH_ENV);
 	}
-	env_array = ft_remove_from_split(g_shell.env, name);
+	env_array = ft_remove_from_split_c(g_shell.env, name, '=');
 	safe_free(g_shell.env);
 	safe_free(curr_env_var);
 	g_shell.env = env_array;

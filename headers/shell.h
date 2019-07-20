@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 18:52:36 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/18 22:12:45 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 19:54:42 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ typedef struct	s_shell
 
 }				t_shell;
 
-t_shell			g_shell;
+extern t_shell	g_shell;
 
 #endif

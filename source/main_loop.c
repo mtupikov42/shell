@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:02:35 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/20 14:58:11 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 20:18:09 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,25 @@ static char		**read_input(void)
 {
 	char	*line;
 	char	**commands;
+	int 	status;
 
 	commands = NULL;
-	if (get_next_line(STDIN_FILENO, &line))
+	if ((status = isatty(STDIN_FILENO)) &&
+		(status = get_next_line(STDIN_FILENO, &line)) > 0)
 	{
-		if (ft_strlen(line) == 0)
+		if (!line || ft_strlen(line) == 0)
 		{
-			free(line);
+			safe_free(line);
 			return (NULL);
 		}
 		commands = ft_strsplit(line, ';');
 		free(line);
+	}
+	if (status == 0)
+	{
+		g_shell.is_running = false;
+		ft_splitdel(&commands);
+		return (NULL);
 	}
 	return (commands);
 }
@@ -83,7 +91,7 @@ int				main_loop(void)
 	int		i;
 	char	**commands;
 	char	**args;
-	char	**trimmed_args;
+	char	**trimmed;
 
 	while (g_shell.is_running)
 	{
@@ -95,12 +103,12 @@ int				main_loop(void)
 			{
 				expand_variables(&commands[i]);
 				args = ft_strsplit(commands[i], ' ');
-				trimmed_args = trim_arguments(args);
+				trimmed = trim_arguments(args);
 				ft_splitdel(&args);
-				g_shell.last_status = execute_command((const char **)trimmed_args);
+				g_shell.last_status = execute_command((const char **)trimmed);
 				if (g_shell.last_status != SUCCESS)
-					print_error(trimmed_args[0], g_shell.last_status);
-				ft_splitdel(&trimmed_args);
+					print_error(trimmed[0], g_shell.last_status);
+				ft_splitdel(&trimmed);
 			}
 		ft_splitdel(&commands);
 	}

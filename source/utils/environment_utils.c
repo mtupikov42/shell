@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:23:00 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/18 22:16:53 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 19:47:46 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,22 +80,22 @@ char		*replace_environment_variables(char *line)
 	char	*value;
 
 	i = -1;
-	res = ft_strdup(line);
-	while (res[++i])
-		if (res[i] == '$')
-		{
-			len = var_length(&res[i]);
-			key = grab_variable(&res[i], len);
-			if (!key)
-				continue;
-			value = get_environment(key + 1);
-			line = ft_replace_substring(res, key, value);
-			len = ft_strlen(value);
-			free(res);
-			free(key);
-			free(value);
-			res = line;
-			i += len - 1;
-		}
+	if ((res = ft_strdup(line)))
+		while (res[++i])
+			if (res[i] == '$')
+			{
+				len = var_length(&res[i]);
+				if (!(key = grab_variable(&res[i], len)))
+					continue;
+				if (!(value = get_environment(key + 1)))
+					value = ft_strnew(0);
+				line = ft_replace_substring(res, key, value);
+				len = ft_strlen(value);
+				free(res);
+				free(key);
+				free(value);
+				res = line;
+				i += len - 1;
+			}
 	return (res);
 }
