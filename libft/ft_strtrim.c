@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 14:01:57 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/20 12:31:58 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 14:17:58 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ char	*ft_strtrim(const char *s)
 	if (s)
 	{
 		i = 0;
-		while ((s[i] == ' ' || s[i] == '\t' || s[i] == '\n') && s[i])
+		while (s[i] && ft_is_whitespace(s[i]))
 			i++;
 		j = ft_strlen(s) - 1;
 		if (!(ret = (char *)malloc(sizeof(char) * (j - i + 1))))
 			return (NULL);
-		while ((s[j] == ' ' || s[j] == '\t' || s[j] == '\n') && j >= 0)
+		while (j >= 0 && ft_is_whitespace(s[i]))
 			j--;
 		k = -1;
 		while (i <= j)

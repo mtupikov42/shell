@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:02:35 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/19 14:23:08 by anonymous        ###   ########.fr       */
+/*   Updated: 2019/07/20 14:58:11 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main_loop.h"
 #include "utils/shell_utils.h"
 #include "utils/errors.h"
+#include "utils/execution_utils.h"
 #include "libft.h"
 #include "execution/execution.h"
 #include "shell.h"
@@ -82,22 +83,25 @@ int				main_loop(void)
 	int		i;
 	char	**commands;
 	char	**args;
+	char	**trimmed_args;
 
 	while (g_shell.is_running)
 	{
 		print_prompt();
 		commands = read_input();
-		i = 0;
-		while (commands && commands[i])
-		{
-			expand_variables(&commands[i]);
-			args = ft_strsplit(commands[i], ' ');
-			g_shell.last_status = execute_command((const char **)args);
-			if (g_shell.last_status != SUCCESS)
-				print_error(args[0], g_shell.last_status);
-			ft_splitdel(&args);
-			++i;
-		}
+		i = -1;
+		while (commands && commands[++i])
+			if (!command_contain_only_whitespaces(commands[i]))
+			{
+				expand_variables(&commands[i]);
+				args = ft_strsplit(commands[i], ' ');
+				trimmed_args = trim_arguments(args);
+				ft_splitdel(&args);
+				g_shell.last_status = execute_command((const char **)trimmed_args);
+				if (g_shell.last_status != SUCCESS)
+					print_error(trimmed_args[0], g_shell.last_status);
+				ft_splitdel(&trimmed_args);
+			}
 		ft_splitdel(&commands);
 	}
 	return (SUCCESS);

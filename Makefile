@@ -36,6 +36,7 @@ SRC_BUILTINS =		builtins_1.c \
 
 SRC_UTILS =			environment_utils.c \
 					errors.c \
+					execution_utils.c \
 
 SRC_ENVORONMENT =	environment.c \
 					variables_expansion.c \
