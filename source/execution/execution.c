@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:28:03 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/19 16:02:07 by anonymous        ###   ########.fr       */
+/*   Updated: 2019/07/20 12:43:49 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 #include "builtins/builtins.h"
 #include "environment/environment.h"
 #include "libft.h"
+#include "shell.h"
 #include <sys/types.h>
 #include <sys/wait.h>
 
-static int	fork_and_execute(const char **args)
+static int	fork_and_execute(char *path, const char **args)
 {
 	int	status;
 
 	g_shell.process = fork();
 	if (g_shell.process == 0)
 	{
-		execve(args[0], args + 1, g_shell.env);
+		execve(path, (char **)args, g_shell.env);
 		g_shell.is_running = false;
 		return (SUCCESS);
 	}
@@ -75,7 +76,7 @@ static int	try_execute_global_binary(const char **args)
 		free(path);
 		++i;
 	}
-	ft_splitdel(paths);
+	ft_splitdel(&paths);
 	return (status);
 }
 
@@ -83,7 +84,7 @@ static int	try_execute_local_binary(const char **args)
 {
 	int		status;
 	char	*pwd;
-	char	*full_path;
+	char	*path;
 
 	status = PERMISIION_DENIED;
 	pwd = get_environment(PWD_VAR);

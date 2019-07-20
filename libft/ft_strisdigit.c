@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strisdigit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 16:56:37 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/05/13 16:57:10 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:27:11 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-int		ft_strisdigit(char *s)
+int		ft_strisdigit(const char *s)
 {
 	while (*s)
 	{

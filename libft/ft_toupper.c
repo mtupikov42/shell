@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 19:51:49 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/03/25 20:25:48 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:32:46 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-int		ft_toupper(int c)
+int		ft_toupper(const int c)
 {
 	unsigned char uc;
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 12:24:32 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/03/25 20:35:28 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:20:14 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	*ft_memalloc(size_t size)
+void	*ft_memalloc(const size_t size)
 {
 	void *ret;
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <mtupikov@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:21:00 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/05/19 15:21:00 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:16:11 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-static double	frac_part(char *num, int *div)
+static double	frac_part(const char *num, int *div)
 {
 	double frac;
 
@@ -32,7 +32,7 @@ static double	frac_part(char *num, int *div)
 	return (frac);
 }
 
-double			ft_atof(char *num)
+double			ft_atof(const char *num)
 {
 	double	integer_part;
 	int		div;

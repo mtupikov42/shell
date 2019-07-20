@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cd_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:46:43 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/19 15:55:12 by anonymous        ###   ########.fr       */
+/*   Updated: 2019/07/20 12:37:57 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins/cd_cmd.h"
+#include "utils/shell_utils.h"
+#include "environment/environment.h"
 #include <unistd.h>
+#include "libft.h"
 
 static int	access_path(const char *dir)
 {

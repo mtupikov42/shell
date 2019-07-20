@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:26:48 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/19 14:20:52 by anonymous        ###   ########.fr       */
+/*   Updated: 2019/07/20 12:38:17 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERRORS_H
 # define ERRORS_H
 
-void	print_error(char *binary_name, int status);
+void	print_error(const char *binary_name, const int status);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:26:26 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/19 12:14:27 by anonymous        ###   ########.fr       */
+/*   Updated: 2019/07/20 12:36:44 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	bt_cd(const char **args)
 	char	current_pwd[PWD_BUFF_SIZE];
 
 	if (ft_strsplit_count(args) > 1)
-		return (CD_TOO_MANY_ARGS);
+		return (TOO_MANY_ARGS);
 	old_pwd = get_environment(OLD_PWD_VAR);
 	getcwd(current_pwd, PWD_BUFF_SIZE);
 	status = execute_cd(args[0], old_pwd);
@@ -66,14 +66,14 @@ int	bt_setenv(const char **args)
 	int		args_len;
 	int		status;
 
-	args_len = ft_strsplit_count((char **)args);
+	args_len = ft_strsplit_count(args);
 	if ((args_len != 3 && args_len != 1)
 		|| (args_len == 3 && ft_strlen(args[1]) == 1 && *args[1] != '='))
 		return (SETENV_SYNTAX_ERROR);
 	if (args_len == 3)
 		return (set_environment((char *)args[0], (char *)args[2]));
-	split = ft_strsplit((char *)args[0], '=');
-	if (ft_strsplit_count(split) != 2)
+	split = ft_strsplit(args[0], '=');
+	if (ft_strsplit_count((const char **)split) != 2)
 	{
 		ft_splitdel(&split);
 		return (SETENV_SYNTAX_ERROR);
@@ -90,7 +90,7 @@ int	bt_unsetenv(const char **args)
 	int	error_status;
 
 	error_status = SUCCESS;
-	if (ft_strsplit_count((char **)args) == 0)
+	if (ft_strsplit_count(args) == 0)
 		return (UNSETENV_ARGS_ERROR);
 	i = 0;
 	while (args[i])

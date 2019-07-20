@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 14:12:54 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/03/25 20:39:56 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:22:08 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
 int		ft_memcmp(const void *restrict memptr1,
-		const void *restrict memptr2, size_t num)
+		const void *restrict memptr2, const size_t num)
 {
 	char	*mem1;
 	char	*mem2;

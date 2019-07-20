@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 19:51:49 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/03/25 21:15:35 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:30:23 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-char	*ft_strrchr(const char *str, int symbol)
+char	*ft_strrchr(const char *str, const int symbol)
 {
 	int i;
 

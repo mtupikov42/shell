@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:29:41 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/18 22:06:49 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:48:14 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_split_join_delimiter(const char **split, const char *delimiter)
 	len = 0;
 	while (split[++i])
 		len += ft_strlen(split[i]);
-	len += ft_strsplit_count((char **)split);
+	len += ft_strsplit_count(split);
 	str = (char *)ft_memalloc(sizeof(char) * len);
 	i = -1;
 	while (split[++i])

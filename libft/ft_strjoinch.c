@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoinch.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/01 21:12:27 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/04/01 21:12:37 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:27:34 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-char	*ft_strjoinch(char const *s1, char c)
+char	*ft_strjoinch(char const *s1, const char c)
 {
 	char	*new_str;
 	size_t	i;

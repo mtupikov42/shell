@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   split_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 16:54:13 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/05/13 16:54:53 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:46:57 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 #include "includes/ft_printf.h"
 
-int		ft_strsplit_count(char **split)
+int		ft_strsplit_count(const char **split)
 {
 	int len;
 	int i;
@@ -32,7 +32,7 @@ char	**ft_append_to_split(char **split, char *str)
 	char	**res;
 	int		old_len;
 
-	old_len = ft_strsplit_count(split);
+	old_len = ft_strsplit_count((const char **)split);
 	res = (char **)ft_memalloc(sizeof(char *) * (old_len + 2));
 	ft_memcpy(res, split, sizeof(char *) * old_len);
 	res[old_len] = str;
@@ -40,7 +40,7 @@ char	**ft_append_to_split(char **split, char *str)
 	return (res);
 }
 
-int		ft_split_has_dupl(char **split)
+int		ft_split_has_dupl(const char **split)
 {
 	int i;
 	int j;
@@ -82,7 +82,7 @@ char	**ft_splitrealloc(char **old, int size)
 	return (new);
 }
 
-void	print_split(char **split)
+void	print_split(const char **split)
 {
 	int i;
 

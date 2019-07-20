@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 17:48:52 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/03/25 21:27:34 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:25:14 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-static void	print_num(int num, int fd)
+static void	print_num(int num, const int fd)
 {
 	if (num == 0)
 		return ;
@@ -20,7 +20,7 @@ static void	print_num(int num, int fd)
 	ft_putchar_fd(num % 10 + '0', fd);
 }
 
-void		ft_putnbr_fd(int n, int fd)
+void		ft_putnbr_fd(int n, const int fd)
 {
 	int por;
 	int cop;

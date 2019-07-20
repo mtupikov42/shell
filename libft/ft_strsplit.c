@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 15:19:58 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/03/25 21:28:21 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:31:27 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static char		*get_word(char const *s, char c, int w)
 	return (ret);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(const char *s, const char c)
 {
 	char	**ret;
 	int		i;

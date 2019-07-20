@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 08:32:29 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/03/25 20:22:11 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:18:33 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isascii(int c)
+int		ft_isascii(const int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);

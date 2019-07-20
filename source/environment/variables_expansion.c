@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   variables_expansion.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 10:19:20 by anonymous         #+#    #+#             */
-/*   Updated: 2019/07/19 15:46:57 by anonymous        ###   ########.fr       */
+/*   Updated: 2019/07/20 12:40:31 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "environment/variables_expansion.h"
+#include "environment/environment.h"
 #include "utils/environment_utils.h"
 #include "utils/shell_utils.h"
 #include "libft.h"
@@ -20,7 +21,7 @@ static bool		after_home_is_valid(const char c)
 	return (c == '/' || c == '\0' || ft_is_whitespace(c));
 }
 
-static bool		check_home(const char *line)
+static bool		check_home(const char *line, const int i)
 {
 	return ((line[i] == HOME_SYM &&
 			i == 0 && after_home_is_valid(line[i + 1])) || (i > 0 &&
@@ -28,7 +29,7 @@ static bool		check_home(const char *line)
 			after_home_is_valid(line[i + 1])));
 }
 
-static char		*replace_home_variable(const char *line)
+char		*replace_home_variable(const char *line)
 {
 	char	*result;
 	char	*var;
@@ -44,7 +45,7 @@ static char		*replace_home_variable(const char *line)
 	result = ft_strdup(line);
 	while (result[i])
 	{
-		if (check_home(&result[i]))
+		if (check_home(&result[i], i))
 		{
 			tmp = ft_replace_substring(result, "~", var);
 			free(result);

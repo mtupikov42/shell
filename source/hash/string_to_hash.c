@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_to_hash.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:09:39 by anonymous         #+#    #+#             */
-/*   Updated: 2019/07/19 16:11:09 by anonymous        ###   ########.fr       */
+/*   Updated: 2019/07/20 12:44:09 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ unsigned long	string_to_hash(const char *str)
 	char			c;
 
 	hash = 0;
-	while (c = *str++)
+	while ((c = *str++))
 		hash = c + (hash << 6) + (hash << 16) - hash;
 	return (hash);
 }

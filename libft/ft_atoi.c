@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 08:20:31 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/03/25 20:24:39 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:16:23 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_atoi(char *str)
+long	ft_atoi(const char *str)
 {
 	long		por;
 	long		ret;

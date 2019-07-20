@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:26:34 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/18 22:15:15 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:38:55 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ char	**copy_environment(char **argenv, char **globalenv)
 	char	**env;
 
 	env = argenv ? argenv : globalenv;
-	cpy = (char **)ft_memalloc(sizeof(char*) * (ft_strsplit_count(env) + 1));
+	cpy = (char **)ft_memalloc(sizeof(char *) *
+		(ft_strsplit_count((const char **)env) + 1));
 	i = -1;
 	while (env[++i])
 	{

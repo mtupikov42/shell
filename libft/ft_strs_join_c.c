@@ -6,13 +6,13 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:21:22 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/18 22:07:20 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:31:17 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-char	*ft_strs_join_c(char *str1, char *str2, char c)
+char	*ft_strs_join_c(const char *str1, const char *str2, const char c)
 {
 	char	*res;
 	int		i;

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 08:20:56 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/03/25 20:21:28 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:18:39 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c)
+int		ft_isdigit(const int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);

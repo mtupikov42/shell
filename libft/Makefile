@@ -22,7 +22,7 @@ SRC =   ft_atoi.c ft_bzero.c ft_isalnum.c \
         ft_strncpy.c ft_strnequ.c ft_strnew.c \
         ft_strnstr.c ft_strrchr.c ft_strsplit.c \
         ft_strstr.c ft_strsub.c ft_strtrim.c \
-        ft_tolower.c ft_toupper.c ft_swapint.c \
+        ft_tolower.c ft_toupper.c \
         get_next_line.c ft_countwords.c ft_lstrev.c \
         ft_lstcount.c ft_doubleptrdel.c \
         ft_printf.c print_str.c print.c \
@@ -31,7 +31,7 @@ SRC =   ft_atoi.c ft_bzero.c ft_isalnum.c \
         split_utils.c ft_strisdigit.c ft_atof.c \
         t_vector_logic.c safe_free.c ft_strs_join_c.c \
         ft_remove_from_split.c ft_replace_substring.c \
-        ft_split_join.c \
+        ft_split_join.c ft_is_whitespace.c \
 
 CC	= clang
 

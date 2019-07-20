@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 22:01:20 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/18 22:05:13 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:47:42 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_remove_from_split(char **split, char *var)
 
 	i = 0;
 	j = 0;
-	len = ft_strsplit_count(split);
+	len = ft_strsplit_count((const char **)split);
 	new_split = (char **)ft_memalloc(sizeof(char *) * len);
 	while (split[i])
 	{

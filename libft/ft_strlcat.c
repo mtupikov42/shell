@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtupikov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 08:33:36 by mtupikov          #+#    #+#             */
-/*   Updated: 2018/03/25 20:15:09 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:28:16 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-size_t	ft_strlcat(char *dest, const char *from, size_t size)
+size_t	ft_strlcat(char *dest, const char *from, const size_t size)
 {
 	size_t dest_size;
 	size_t from_size;

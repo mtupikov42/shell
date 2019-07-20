@@ -12,6 +12,7 @@ SRC_UTILS_PATH = $(SRC_PATH)utils/
 SRC_ENVORONMENT_PATH = $(SRC_PATH)environment/
 SRC_EXECUTION_PATH = $(SRC_PATH)execution/
 SRC_HASH_PATH = $(SRC_PATH)hash/
+SRC_SIGNALS_PATH = $(SRC_PATH)signals/
 
 INC_PATH = ./headers/
 INC_BUILTINS_PATH = $(INC_PATH)builtins/
@@ -19,6 +20,7 @@ INC_UTILS_PATH = $(INC_PATH)utils/
 INC_ENVORONMENT_PATH = $(INC_PATH)environment/
 INC_EXECUTION_PATH = $(INC_PATH)execution/
 INC_HASH_PATH = $(INC_PATH)hash/
+INC_SIGNALS_PATH = $(INC_PATH)signals/
 
 LIB_PATH = ./libft/
 
@@ -41,6 +43,10 @@ SRC_ENVORONMENT =	environment.c \
 SRC_EXECUTION =		execution.c \
 
 SRC_HASH =			string_to_hash.c \
+					hash_table.c \
+					hash_memory.c \
+
+SRC_SIGNALS =		signals.c \
 
 # <=== OBJ ===>
 
@@ -52,6 +58,7 @@ OBJ_SRC_UTILS = $(addprefix $(OBJ_DIR)/, $(SRC_UTILS:.c=.o))
 OBJ_SRC_ENVORONMENT = $(addprefix $(OBJ_DIR)/, $(SRC_ENVORONMENT:.c=.o))
 OBJ_SRC_EXECUTION = $(addprefix $(OBJ_DIR)/, $(SRC_EXECUTION:.c=.o))
 OBJ_SRC_HASH = $(addprefix $(OBJ_DIR)/, $(SRC_HASH:.c=.o))
+OBJ_SRC_SIGNALS = $(addprefix $(OBJ_DIR)/, $(SRC_SIGNALS:.c=.o))
 
 # <=== COMPILER ===>
 
@@ -59,7 +66,7 @@ CC = clang
 
 INCLUDES = -I$(INC_PATH) -I$(INC_BUILTINS_PATH) -I$(INC_UTILS_PATH) \
 			-I$(INC_ENVORONMENT_PATH) -I$(INC_EXECUTION_PATH) \
-			-I$(INC_HASH_PATH) \
+			-I$(INC_HASH_PATH) -I$(INC_SIGNALS_PATH)\
 
 FLG =	-Werror -Wextra -Wall -I$(LIB_PATH)includes $(INCLUDES)
 
@@ -69,12 +76,12 @@ all: $(NAME)
 
 $(NAME): $(OBJ_SRC) $(OBJ_SRC_BUILTINS) $(OBJ_SRC_UTILS) \
 			$(OBJ_SRC_ENVORONMENT) $(OBJ_SRC_EXECUTION) \
-			$(OBJ_SRC_HASH)
+			$(OBJ_SRC_HASH) $(OBJ_SRC_SIGNALS)
 	@make -C $(LIB_PATH)
 	@$(CC) $(FLG) -g $(LIB_PATH)$(LIBFT_NAME)  \
 	$(OBJ_SRC) $(OBJ_SRC_BUILTINS) $(OBJ_SRC_UTILS) \
 	$(OBJ_SRC_ENVORONMENT) $(OBJ_SRC_EXECUTION) \
-	$(OBJ_SRC_HASH) -o $(NAME)
+	$(OBJ_SRC_HASH) $(OBJ_SRC_SIGNALS) -o $(NAME)
 	@echo "shell ✅"
 
 $(OBJ_DIR)/%.o : $(SRC_PATH)%.c
@@ -94,6 +101,9 @@ $(OBJ_DIR)/%.o : $(SRC_EXECUTION_PATH)%.c
 	@$(CC) $(FLG) -c -o $@ $<
 
 $(OBJ_DIR)/%.o : $(SRC_HASH_PATH)%.c
+	@$(CC) $(FLG) -c -o $@ $<
+
+$(OBJ_DIR)/%.o : $(SRC_SIGNALS_PATH)%.c
 	@$(CC) $(FLG) -c -o $@ $<
 
 clean:

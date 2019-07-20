@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hash_table.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 17:07:39 by anonymous         #+#    #+#             */
-/*   Updated: 2019/07/19 18:06:07 by anonymous        ###   ########.fr       */
+/*   Updated: 2019/07/20 12:52:08 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void				ht_insert_m(t_hash_table *table, char *key, char *value)
 {
-	ht_hashed_item	*item;
+	t_hashed_item	*item;
 	unsigned long	hash_i;
 
 	item = ht_alloc_hashed_item_m(key, value);
@@ -24,13 +24,13 @@ void				ht_insert_m(t_hash_table *table, char *key, char *value)
 	if (table->array[hash_i])
 		delete_hashed_item(table->array[hash_i]);
 	table->array[hash_i] = item;
-	ht->size++;
+	table->size++;
 }
 
 void				ht_insert(t_hash_table *table, const char *key,
 					const char *value)
 {
-	ht_hashed_item	*item;
+	t_hashed_item	*item;
 	unsigned long	hash_i;
 
 	item = ht_alloc_hashed_item(key, value);
@@ -38,7 +38,7 @@ void				ht_insert(t_hash_table *table, const char *key,
 	if (table->array[hash_i])
 		delete_hashed_item(table->array[hash_i]);
 	table->array[hash_i] = item;
-	ht->size++;
+	table->size++;
 }
 
 void				ht_remove(t_hash_table *table, const char *key)
