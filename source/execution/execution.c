@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:28:03 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/20 20:24:41 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 20:27:43 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ static int	try_execute_global_binary(const char **args)
 	i = -1;
 	status = PERMISIION_DENIED;
 	while (paths[++i] && status != SUCCESS)
-		{
-			path = ft_strs_join_c(paths[i], args[0], '/');
-			if (access(path, X_OK) == 0)
-				status = fork_and_execute(path, args);
-			else if (access(path, F_OK) != 0)
-				status = NO_SUCH_BINARY;
-			free(path);
-		}
+	{
+		path = ft_strs_join_c(paths[i], args[0], '/');
+		if (access(path, X_OK) == 0)
+			status = fork_and_execute(path, args);
+		else if (access(path, F_OK) != 0)
+			status = NO_SUCH_BINARY;
+		free(path);
+	}
 	ft_splitdel(&paths);
 	return (status);
 }

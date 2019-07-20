@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:02:35 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/20 20:18:09 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 20:29:48 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char		**read_input(void)
 {
 	char	*line;
 	char	**commands;
-	int 	status;
+	int		status;
 
 	commands = NULL;
 	if ((status = isatty(STDIN_FILENO)) &&

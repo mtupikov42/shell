@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 10:19:20 by anonymous         #+#    #+#             */
-/*   Updated: 2019/07/20 20:11:58 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 20:27:13 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static bool		after_home_is_valid(const char c)
 	return (c == '/' || c == '\0' || ft_is_whitespace(c));
 }
 
-char		*replace_home_variable(const char *line)
+char			*replace_home_variable(const char *line)
 {
 	char	*result;
 	char	*var;

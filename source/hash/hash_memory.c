@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hash_memory.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 17:23:44 by anonymous         #+#    #+#             */
-/*   Updated: 2019/07/19 17:24:07 by anonymous        ###   ########.fr       */
+/*   Updated: 2019/07/20 20:28:59 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_hashed_item		*ht_alloc_hashed_item_m(char *key, char *value)
 t_hashed_item		*ht_alloc_hashed_item(const char *key, const char *value)
 {
 	t_hashed_item	*item;
-	char 			*c_key;
+	char			*c_key;
 	char			*c_value;
 
 	c_key = ft_strdup(key);
@@ -61,7 +61,8 @@ t_hash_table		*ht_alloc_hash_table(const int capacity)
 
 void				delete_hashed_item(t_hashed_item *item)
 {
-	if (item) {
+	if (item)
+	{
 		safe_free(item->key);
 		safe_free(item->value);
 		free(item);

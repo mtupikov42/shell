@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:27:26 by anonymous         #+#    #+#             */
-/*   Updated: 2019/07/20 16:50:35 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 20:38:23 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ static void	ignore_signal(int s)
 
 void		setup_signals(void)
 {
-	const struct sigaction ignore_act = {
-		.sa_handler = &ignore_signal,
-		.sa_flags = 0,
-		.sa_mask = 0
-	};
+	static struct sigaction	ignore_act = {{&ignore_signal}, 0, 0};
 
 	sigaction(SIGINT, &ignore_act, NULL);
 }

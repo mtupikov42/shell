@@ -6,7 +6,7 @@
 /*   By: mtupikov <mtupikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 13:47:37 by mtupikov          #+#    #+#             */
-/*   Updated: 2019/07/20 20:24:09 by mtupikov         ###   ########.fr       */
+/*   Updated: 2019/07/20 20:30:11 by mtupikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	get_size_without_empty_lines(char **args)
 	return (size);
 }
 
-bool	command_contain_only_whitespaces(char *cmd)
+bool		command_contain_only_whitespaces(char *cmd)
 {
 	int	i;
 
@@ -50,7 +50,7 @@ bool	command_contain_only_whitespaces(char *cmd)
 	return (true);
 }
 
-char	**trim_arguments(char **args)
+char		**trim_arguments(char **args)
 {
 	int		i;
 	int		j;
@@ -76,7 +76,7 @@ char	**trim_arguments(char **args)
 	return (new_args);
 }
 
-int		try_execute_directly(const char **args)
+int			try_execute_directly(const char **args)
 {
 	int status;
 
